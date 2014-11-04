@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
@@ -12,17 +15,53 @@
 <script src="chord.js"></script>
 </head>
 <body>
-<h1> InfoViz - Personal Project </h1>
-<h2> Yi-Yin Wang </h2>
-<p>Built with <a href="http://d3js.org/">d3.js</a>.</aside>
-<!--
-<FORM> 
-<INPUT TYPE="Button" value="Reset" onclick="recolor('black')"/> 
-<INPUT TYPE="Button" value="Map population to color" onclick="recolorByPopulation()"/> 
-<INPUT TYPE="Button" value="Map population to size" onclick="reSizeByPopulation()"/> 
-<INPUT TYPE="Button" value="Map population to color+size" onclick="changeBothByPopulation()"/> 
-</FORM> 
--->
+<div class="container-fluid">
+	<div class="page-header">
+		<h1> InfoViz - Personal Project </h1>
+		<h2> Yi-Yin Wang </h2>
+		<p>Built with <a href="http://d3js.org/">d3.js</a>.</aside>
+	</div>
+	<div class="row">
+		<div class="panel panel-default col-md-3">
+			<div class="panel-heading">Filter</div>
+		  	<div class="panel-body">
+		  		<select class="form-control">
+				  <option>Flights</option>
+				  <option>Passengers</option>				
+				</select>
+		   		
+		   		<!-- State Filter -->
+		   		<b> State Population </b>
+		   		<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+				    All
+				  </label>
+				</div>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+				    Large
+				  </label>
+				</div>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+				    Middle
+				  </label>
+				</div>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+				    Small
+				  </label>
+				</div>
+		  	</div>
+		 
+		</div>
+		<div id="chordDiv" class="col-md-9"></div>
+	</div>
+</div> <!--End of container -->
 <script type="text/javascript">
 
 
@@ -49,8 +88,8 @@ function drawChr(matrix,states){
     	.matrix(matrix);  //set the input data
 
 	/** Define parameters and tools **/
-	var width = 1200, //960,
-	    height = 1160,//500,
+	var width = 860, //960,
+	    height = 840,//500,
 	    innerRadius = Math.min(width, height) * .35,
 	    outerRadius = innerRadius * 1.1;
 
@@ -67,7 +106,8 @@ function drawChr(matrix,states){
 				.radius(innerRadius);
 
 	/* Draw the circle */
-	var svg = d3.select("body").append("svg")
+	//var svg = d3.select("body").append("svg")
+	var svg = d3.select("#chordDiv").append("svg")
 	    .attr("width", width)
 	    .attr("height", height)
 	  	.append("g")
@@ -106,12 +146,12 @@ function drawChr(matrix,states){
 					.each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
 		            .attr("dy", ".35em")
 		            .style("font-family", "arial, sans-serif")
-		            .style("font-size", "12px")
+		            .style("font-size", "10px")
 		            .style("font-family", "arial, sans-serif")
 		            .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
 		            .attr("transform", function(d) {
 		              return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-		                  + "translate(" + (innerRadius + 80) + ")"
+		                  + "translate(" + (innerRadius + 50) + ")"
 		                  + (d.angle > Math.PI ? "rotate(180)" : "");
 		            })
 		            .text(function(d) { return states[d.index].state_name; });
