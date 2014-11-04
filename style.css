@@ -180,3 +180,17 @@ left: 2em;
 blockquote:after {
 position: absolute;
 }
+
+/*****
+Chord
+*****/
+#circle circle {
+fill: none;
+pointer-events: all;
+}
+ 
+
+
+#circle:hover path.fade {
+display: none;
+}
