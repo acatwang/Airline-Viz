@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b95dbd73-4c33-4e1b-bfb9-bda085001c7e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Airline-Viz.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cleaner.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/other.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/matrixmkr.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/testrunner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Airline-Viz.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="b95dbd73-4c33-4e1b-bfb9-bda085001c7e" time="1415066617542" ignored="false" />
     <file path="/cleaner.py" changelist="b95dbd73-4c33-4e1b-bfb9-bda085001c7e" time="1415090321567" ignored="false" />
+    <file path="/matrixmkr.py" changelist="b95dbd73-4c33-4e1b-bfb9-bda085001c7e" time="1415097175047" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cleaner.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cleaner.py">
+      <file leaf-file-name="matrixmkr.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/matrixmkr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="85" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.85384613">
-              <folding>
-                <element signature="e#100#110#0" expanded="true" />
-              </folding>
+            <state line="15" column="9" selection-start="389" selection-end="389" vertical-scroll-proportion="-0.23076923">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,6 +59,7 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/cleaner.py" />
+        <option value="$PROJECT_DIR$/matrixmkr.py" />
       </list>
     </option>
   </component>
@@ -118,6 +113,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Airline-Viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Airline-Viz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -127,7 +136,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
   </component>
-  <component name="RunManager" selected="Python.cleaner">
+  <component name="RunManager" selected="Python.matrixmkr">
     <configuration default="false" name="cleaner" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -142,6 +151,25 @@
       <module name="Airline-Viz" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cleaner.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="matrixmkr" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Airline-Viz" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/matrixmkr.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -206,12 +234,14 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.cleaner" />
+      <item index="1" class="java.lang.String" itemvalue="Python.matrixmkr" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.cleaner" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.matrixmkr" />
+        <item index="1" class="java.lang.String" itemvalue="Python.cleaner" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +256,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -308,12 +338,10 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cleaner.py">
+    <entry file="file://$PROJECT_DIR$/matrixmkr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="85" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.85384613">
-          <folding>
-            <element signature="e#100#110#0" expanded="true" />
-          </folding>
+        <state line="15" column="9" selection-start="389" selection-end="389" vertical-scroll-proportion="-0.23076923">
+          <folding />
         </state>
       </provider>
     </entry>
