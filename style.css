@@ -188,9 +188,15 @@ Chord
 fill: none;
 pointer-events: all;
 }
- 
+
+path.chord {
+stroke: #000;
+stroke-width: .25px;
+}
 
 
-#circle:hover path.fade {
-display: none;
+#circle:hover path.fadechord {
+	 display: none;
+        fill-opacity: .1;
+
 }
