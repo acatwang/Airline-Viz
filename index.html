@@ -30,15 +30,31 @@
 		<div class="panel panel-default col-md-3">
 			<div class="panel-heading">Filter</div>
 		  	<div class="panel-body">
-		  		<select class="form-control">
-				  <option>Flights</option>
-				  <option>Passengers</option>				
-				</select>
-		   		
+				<div class="panel panel-primary">
+			  		<p class="filters"> Data: </p>
+			  		<label class="radio-inline">
+						<input type="radio" name="datatype" id="inlineRadio1" value="flight" checked> Flight
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="datatype" id="inlineRadio2" value="passengers"> Passener
+					</label>
+				</div>
+
+		  		<div class="panel panel-primary">
+			  		<p class="filters"> Color encodes: </p>
+			  		<label class="radio-inline">
+						<input type="radio" name="colorcode" id="colorcode1" value="origin" checked> Origin 
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="colorcode" id="colorcode2" value="fillrate"> Fill Rate
+					</label>
+				</div>
+
 		   		<!-- State Filter -->
 		   		
-		   		<div>
-		   			<b> <label for"amount">State Population Rank: </label>
+		   		<div class="panel panel-primary">
+		   			<!-- <b> <label for"amount">State Population Rank: </label> -->
+		   			<p class="filters">State Population Rank:</p>
 		   			<input type="text" id="amount" readonly style="border:0;">
 		   			</b>
 		   			<div id="slider-range"></div>
@@ -253,13 +269,13 @@ function drawChr(matrix,states,chosenStatesOrder){
 	/* Add text label on group */
 
 	//For debug use
-	var groupText = group.append("text")
-					.attr("x", 6)
-					.attr("dy", 15);
+	// var groupText = group.append("text")
+	// 				.attr("x", 6)
+	// 				.attr("dy", 15);
 					 
-					groupText.append("textPath")
-					.attr("xlink:href", function(d, i) { return "#group" + i; })
-					.text(function(d, i) { console.log(d);return (ip_stateName[chosenStatesOrder[i]]); });
+	// 				groupText.append("textPath")
+	// 				.attr("xlink:href", function(d, i) { return "#group" + i; })
+	// 				.text(function(d, i) { console.log(d);return (ip_stateName[chosenStatesOrder[i]]); });
 
 	
 	// Add text outside the circle
@@ -278,11 +294,7 @@ function drawChr(matrix,states,chosenStatesOrder){
 		            })
 		            .text(function(d,i){ return ip_stateName[chosenStatesOrder[i]]; });
 	
-		            console.log((state_ip[0]));
 		            
-		            //console.log(states[state_ip[0]]);
-					console.log(states);
-
 
 
 	/*************************************************
@@ -326,7 +338,7 @@ function drawChr(matrix,states,chosenStatesOrder){
 	/*******************
 	  TODO:Ticks granuality
 	*******************/
-
+	/*
 	var ticks = svg.append("g").selectAll("g")
 	    .data(chord.groups)
 	  .enter().append("g").selectAll("g")
@@ -350,7 +362,7 @@ function drawChr(matrix,states,chosenStatesOrder){
 	    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180)translate(-16)" : null; })
 	    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
 	    .text(function(d) { return d.label; }); //TODO: change label
-
+*/
 
 	/*******************
 	  Chord
@@ -542,9 +554,10 @@ function chordTween(oldLayout) {
 
 
 
-function makechord(popMin,popMax){
+function makechord(type,popMin,popMax){
 	//popMin = typeof(popMin) !== 'undefined' ? popMin : 563626;
 	//popMax = typeof(popMax) !== 'undefined' ? popMax : 37253956;
+	type = typeof(popMin) !== 'undefined' ? type : "flight";
 
 	popMin = typeof(popMin) !== 'undefined' ? popMin : 0;
 	popMin = typeof(popMin) !== 'undefined' ? popMin : 50;
@@ -585,7 +598,7 @@ function makechord(popMin,popMax){
 					var ip2 = obj.state_fip;
 					if (ip2 in data[ip]){
 						if (ip2 in data){
-							origState[idx] = data[ip][ip2].flight;
+							origState[idx] = data[ip][ip2][type];
 						
 						}
 					}
@@ -630,16 +643,15 @@ $(document).ready(function () {
 	       + "Rank "+ $( "#slider-range" ).slider( "values", 1 ) );    
   	});
 
-	popMap = d3.scale.sqrt()
-				.domain([0,100])
-      			.range([563626,37253956]);
-      
+
 	$("#submit").click(function(event){
+		var type = $('input[name=datatype]:checked').val()
 		var popRankMin = ($( "#slider-range" ).slider( "values", 0 ) -1);
 		var popRankMax = ($( "#slider-range" ).slider( "values", 1 ));
 		$("#chordDiv").empty();
 
-		makechord(popRankMin,popRankMax);
+		alert(type);
+		makechord(type,popRankMin,popRankMax);
 	})
 
 
