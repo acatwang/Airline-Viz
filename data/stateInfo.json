@@ -1,0 +1,257 @@
+{
+    "1": {
+        "population": "4779736",
+        "region": "3",
+        "state_name": "Alabama"
+    },
+    "10": {
+        "population": "897934",
+        "region": "3",
+        "state_name": "Delaware"
+    },
+    "12": {
+        "population": "18801310",
+        "region": "3",
+        "state_name": "Florida"
+    },
+    "13": {
+        "population": "9687653",
+        "region": "3",
+        "state_name": "Georgia"
+    },
+    "15": {
+        "population": "1360301",
+        "region": "4",
+        "state_name": "Hawaii"
+    },
+    "16": {
+        "population": "1567582",
+        "region": "4",
+        "state_name": "Idaho"
+    },
+    "17": {
+        "population": "12830632",
+        "region": "2",
+        "state_name": "Illinois"
+    },
+    "18": {
+        "population": "6483802",
+        "region": "2",
+        "state_name": "Indiana"
+    },
+    "19": {
+        "population": "3046355",
+        "region": "2",
+        "state_name": "Iowa"
+    },
+    "2": {
+        "population": "710231",
+        "region": "4",
+        "state_name": "Alaska"
+    },
+    "20": {
+        "population": "2853118",
+        "region": "2",
+        "state_name": "Kansas"
+    },
+    "21": {
+        "population": "4339367",
+        "region": "3",
+        "state_name": "Kentucky"
+    },
+    "22": {
+        "population": "4533372",
+        "region": "3",
+        "state_name": "Louisiana"
+    },
+    "23": {
+        "population": "1328361",
+        "region": "1",
+        "state_name": "Maine"
+    },
+    "24": {
+        "population": "5773552",
+        "region": "3",
+        "state_name": "Maryland"
+    },
+    "25": {
+        "population": "6547629",
+        "region": "1",
+        "state_name": "Massachusetts"
+    },
+    "26": {
+        "population": "9883640",
+        "region": "2",
+        "state_name": "Michigan"
+    },
+    "27": {
+        "population": "5303925",
+        "region": "2",
+        "state_name": "Minnesota"
+    },
+    "28": {
+        "population": "2967297",
+        "region": "3",
+        "state_name": "Mississippi"
+    },
+    "29": {
+        "population": "5988927",
+        "region": "2",
+        "state_name": "Missouri"
+    },
+    "30": {
+        "population": "989415",
+        "region": "4",
+        "state_name": "Montana"
+    },
+    "31": {
+        "population": "1826341",
+        "region": "2",
+        "state_name": "Nebraska"
+    },
+    "32": {
+        "population": "2700551",
+        "region": "4",
+        "state_name": "Nevada"
+    },
+    "33": {
+        "population": "1316470",
+        "region": "1",
+        "state_name": "New Hampshire"
+    },
+    "34": {
+        "population": "8791894",
+        "region": "1",
+        "state_name": "New Jersey"
+    },
+    "35": {
+        "population": "2059179",
+        "region": "4",
+        "state_name": "New Mexico"
+    },
+    "36": {
+        "population": "19378102",
+        "region": "1",
+        "state_name": "New York"
+    },
+    "37": {
+        "population": "9535483",
+        "region": "3",
+        "state_name": "North Carolina"
+    },
+    "38": {
+        "population": "672591",
+        "region": "2",
+        "state_name": "North Dakota"
+    },
+    "39": {
+        "population": "11536504",
+        "region": "2",
+        "state_name": "Ohio"
+    },
+    "4": {
+        "population": "6392017",
+        "region": "4",
+        "state_name": "Arizona"
+    },
+    "40": {
+        "population": "3751351",
+        "region": "3",
+        "state_name": "Oklahoma"
+    },
+    "41": {
+        "population": "3831074",
+        "region": "4",
+        "state_name": "Oregon"
+    },
+    "42": {
+        "population": "12702379",
+        "region": "1",
+        "state_name": "Pennsylvania"
+    },
+    "44": {
+        "population": "1052567",
+        "region": "1",
+        "state_name": "Rhode Island"
+    },
+    "45": {
+        "population": "4625364",
+        "region": "3",
+        "state_name": "South Carolina"
+    },
+    "46": {
+        "population": "814180",
+        "region": "2",
+        "state_name": "South Dakota"
+    },
+    "47": {
+        "population": "6346105",
+        "region": "3",
+        "state_name": "Tennessee"
+    },
+    "48": {
+        "population": "25145561",
+        "region": "3",
+        "state_name": "Texas"
+    },
+    "49": {
+        "population": "2763885",
+        "region": "4",
+        "state_name": "Utah"
+    },
+    "5": {
+        "population": "2915918",
+        "region": "3",
+        "state_name": "Arkansas"
+    },
+    "50": {
+        "population": "625741",
+        "region": "1",
+        "state_name": "Vermont"
+    },
+    "51": {
+        "population": "8001024",
+        "region": "3",
+        "state_name": "Virginia"
+    },
+    "53": {
+        "population": "6724540",
+        "region": "4",
+        "state_name": "Washington"
+    },
+    "54": {
+        "population": "1852994",
+        "region": "3",
+        "state_name": "West Virginia"
+    },
+    "55": {
+        "population": "5686986",
+        "region": "2",
+        "state_name": "Wisconsin"
+    },
+    "56": {
+        "population": "563626",
+        "region": "4",
+        "state_name": "Wyoming"
+    },
+    "6": {
+        "population": "37253956",
+        "region": "4",
+        "state_name": "California"
+    },
+    "8": {
+        "population": "5029196",
+        "region": "4",
+        "state_name": "Colorado"
+    },
+    "9": {
+        "population": "3574097",
+        "region": "1",
+        "state_name": "Connecticut"
+    },
+    "state_fip": {
+        "population": "population",
+        "region": "region",
+        "state_name": "state_name"
+    }
+}

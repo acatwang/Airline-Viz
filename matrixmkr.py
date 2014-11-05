@@ -1,6 +1,6 @@
 __author__ = 'user'
-import json
-
+import json,csv
+"""
 json_data=open('data/flight.json')
 data = json.load(json_data)
 
@@ -24,3 +24,44 @@ for ip in state_ip:
         state =[0]*len(state_ip)
     flights.append(state)
 print flights
+"""
+
+#Make state info json
+def makeStateJson():
+    stateJson ={}
+
+    with open("data/states.csv") as f:
+       reader = csv.reader(f,delimiter =",")
+       for row in reader:
+           stateJson[row[0]] = {"state_name" : row[2],
+                                "population" : row[3],
+                                "region" : row[4]}
+    print stateJson
+    with open("data/stateInfo.json","wb") as outfile:
+        json.dump(stateJson, outfile,sort_keys=True,indent=4, separators=(',', ': '))
+
+#makeStateJson();
+
+def makePassengerMatrix():
+    passenger = {}
+    with open("data/flight.csv","rb") as f:
+        reader= csv.reader(f,delimiter=",")
+        header = reader.next()
+        print header
+        for row in reader:
+            #print row
+            #print row[12]
+            orginStateID = row[12]
+            destStateID = row[19]
+            try:
+
+                if row[19] in passenger[row[12]]: # if destiation has shown before
+                    passenger[row[12]][row[19]] += int(row[0])
+                else:
+                    passenger[row[12]][row[19]] = int(row[0])
+            except KeyError:
+                passenger[row[12]] = {row[19]:int(row[0])}
+        print passenger
+        with open("data/passengers.json","wb") as outfile:
+            json.dump(passenger, outfile,sort_keys=True,indent=4, separators=(',', ': '))
+makePassengerMatrix()
