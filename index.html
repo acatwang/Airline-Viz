@@ -16,7 +16,6 @@
 
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
-    <script src="js/mapper.js"></script>
 
 <script src="chord.js"></script>
 </head>
@@ -73,30 +72,12 @@
 
 		   		 <button id="submit" class="btn btn-default">Submit</button>
 		   		
-		   		<div class="radio">
-				  <label>
-				    <input type="radio" name="optionsRadios" id="optionsRadios1" value="state_all" checked>
-				    All
-				  </label>
-				</div>
-				<div class="radio">
-				  <label>
-				    <input type="radio" name="optionsRadios" id="optionsRadios2" value="state_large">
-				    Large
-				  </label>
-				</div>
-				<div class="radio">
-				  <label>
-				    <input type="radio" name="optionsRadios" id="optionsRadios3" value="state_median">
-				    Median
-				  </label>
-				</div>
-				<div class="radio">
-				  <label>
-				    <input type="radio" name="optionsRadios" id="optionsRadios4" value="state_median">
-				    Small
-				  </label>
-				</div>
+		   		<div>
+					<canvas id="myCanvas" width="10" height="10" style="background-color:#FFC061;"></canvas><span> West</span>
+		   			<canvas id="myCanvas" width="10" height="10" style="background-color:#F15854;"></canvas><span> NorthWest</span>
+		   			<canvas id="myCanvas" width="10" height="10" style="background-color:#42C250;"></canvas><span> MidWest</span>
+		   			<canvas id="myCanvas" width="10" height="10" style="background-color:#A4E5F5;"></canvas><span> SouthEasr</span>
+		   		</div>
 		  	</div>
 		 
 		</div>

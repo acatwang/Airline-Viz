@@ -185,6 +185,21 @@ position: absolute;
 /*****
 Filters Panel
 *****/
+
+.square{
+
+    width: 5px;
+    height: 5px;
+}
+
+#square-blue{
+    width: 5px;
+    height: 5px;
+    color: #FFC061;
+}
+            
+}
+
 p.filters{
 	padding: 2px;
 
