@@ -59,6 +59,16 @@
 		   			</b>
 		   			<div id="slider-range"></div>
 		   		</div>
+
+		   		<div class="panel panel-primary" id ="passengerSliderDiv" style="display: none">
+		   			<!-- <b> <label for"amount">State Population Rank: </label> -->
+		   			<p class="filters">Passenger Range:</p>
+		   			<input type="text" id="passeger" readonly style="border:0;">
+		   			</b>
+		   			<div id="passenger-range"></div>
+		   		</div>
+
+
 		   		 <button id="submit" class="btn btn-default">Submit</button>
 		   		
 		   		<div class="radio">
@@ -153,7 +163,7 @@ var ip_stateName = {"1":"Alabama",
 
 var last_chord; //save the existing layout for transition effect
 
-function drawChr(matrix,states,chosenStatesOrder){
+function drawChr(matrix,states,chosenStatesOrder,datatype){
 	console.log(matrix);
 	
 	/** Create the chord layout object **/
@@ -338,31 +348,32 @@ function drawChr(matrix,states,chosenStatesOrder){
 	/*******************
 	  TODO:Ticks granuality
 	*******************/
-	/*
-	var ticks = svg.append("g").selectAll("g")
-	    .data(chord.groups)
-	  .enter().append("g").selectAll("g")
-	    .data(groupTicks)
-	  .enter().append("g")
-	    .attr("transform", function(d) {
-	      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
-	          + "translate(" + outerRadius + ",0)";
-	    });
+	
+	if(datatype=="flight"){
+		var ticks = svg.append("g").selectAll("g")
+		    .data(chord.groups)
+		  .enter().append("g").selectAll("g")
+		    .data(groupTicks)
+		  .enter().append("g")
+		    .attr("transform", function(d) {
+		      return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+		          + "translate(" + outerRadius + ",0)";
+		    });
 
-	ticks.append("line")
-	    .attr("x1", 1)
-	    .attr("y1", 0)
-	    .attr("x2", 5)
-	    .attr("y2", 0)
-	    .style("stroke", "#000");
+		ticks.append("line")
+		    .attr("x1", 1)
+		    .attr("y1", 0)
+		    .attr("x2", 5)
+		    .attr("y2", 0)
+		    .style("stroke", "#000");
 
-	ticks.append("text")
-	    .attr("x", 8)
-	    .attr("dy", ".35em")
-	    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180)translate(-16)" : null; })
-	    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
-	    .text(function(d) { return d.label; }); //TODO: change label
-*/
+		ticks.append("text")
+		    .attr("x", 8)
+		    .attr("dy", ".35em")
+		    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180)translate(-16)" : null; })
+		    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+		    .text(function(d) { return d.label; }); //TODO: change label
+	}
 
 	/*******************
 	  Chord
@@ -419,11 +430,13 @@ function drawChr(matrix,states,chosenStatesOrder){
 	// Returns an array of tick angles and labels, given a group.
 	//TODO: change tick 
 	function groupTicks(d) {
+
 	  var k = (d.endAngle - d.startAngle) / d.value;
 	  return d3.range(0, d.value, 1000).map(function(v, i) {
 	    return {
 	      angle: v * k + d.startAngle,
 	      label: i % 5 ? null : v / 1000 +"k"
+	      
 	    };
 	  });
 	}
@@ -554,10 +567,11 @@ function chordTween(oldLayout) {
 
 
 
-function makechord(type,popMin,popMax){
+function makechord(type,passengerMin,popMin,popMax){
 	//popMin = typeof(popMin) !== 'undefined' ? popMin : 563626;
 	//popMax = typeof(popMax) !== 'undefined' ? popMax : 37253956;
-	type = typeof(popMin) !== 'undefined' ? type : "flight";
+	type = typeof(type) !== 'undefined' ? type : "flight";
+	passengerMin = typeof(passengerMin) !== 'undefined' ? passengerMin : 0;
 
 	popMin = typeof(popMin) !== 'undefined' ? popMin : 0;
 	popMin = typeof(popMin) !== 'undefined' ? popMin : 50;
@@ -584,20 +598,38 @@ function makechord(type,popMin,popMax){
 	var flights = [];
 	d3.csv("data/states.csv",function(states){
 	
-	//d3.json('data/flight.json', function (error, data) {
+	d3.json('data/passengers.json', function (error, passenger) {
 	d3.json('data/data.json', function (error, data) {		
 		console.log(data);
 		var chosenStates = state_pop_rank.slice(popMin,popMax)
 		var chosenStatesOrder =[];
+		console.log(passenger['1']);
+
+		// var numOfArray;
+		// if (passengerMin >0){
+		// 	numOfArray = 0
+		// 	$.each(passenger, function(index,obj){
+		// 		$.each(obj, function(idx, ip){
+		// 			if (obj[ip] > passengerMin){
+		// 				numOfArray +=1;
+		// 			}
+		// 		})
+
+		// 	})
+		// }else{
+		// 	numOfArray = 52;
+		// }
+
 		$.each(states,function(index,obj){			
 			var ip = obj.state_fip;
-			if (chosenStates.indexOf(ip)>-1){ // check if ip exist in chosenStates
+			if (chosenStates.indexOf(ip)>-1 ){ // check if ip exist in chosenStates
 				var origState = Array.apply(null,new Array(52)).map(Number.prototype.valueOf,0);
 
 				$.each(states, function(idx,obj){
 					var ip2 = obj.state_fip;
 					if (ip2 in data[ip]){
-						if (ip2 in data){
+						if (ip2 in data & (passengerMin==0 || data[ip][ip2][type]>passengerMin)){
+
 							origState[idx] = data[ip][ip2][type];
 						
 						}
@@ -611,10 +643,10 @@ function makechord(type,popMin,popMax){
 		})
 	
 	console.log(flights);
-	drawChr(flights,states,chosenStatesOrder);
+	drawChr(flights,states,chosenStatesOrder,type);
  
     }) //end of Flight data
-	
+	}) //end of data
 	})//end of csv
 } // End of makechord func
 
@@ -639,19 +671,50 @@ $(document).ready(function () {
 	        $( "#amount" ).val(  "Rank "+ ui.values[ 0 ] + " - " +  "Rank "+ ui.values[ 1 ] );
 	      }
 	    });
+
 	    $( "#amount" ).val( "Rank "+  $( "#slider-range" ).slider( "values", 0 ) + " - "
 	       + "Rank "+ $( "#slider-range" ).slider( "values", 1 ) );    
+  	
+	    $( "#passenger-range").slider({
+	      value:0,
+	      min:0,
+	      max:11318128,
+	      slide: function( event, ui ) {
+						       	 $( "#passeger" ).val( "Greater than " + ui.value );
+						      }
+	      })
+
+	  	$("#passeger").val("Greater than " + $( "#passenger-range" ).slider('value'))
+
   	});
 
 
+	$("#inlineRadio2").change(function(){
+		if(this.checked){
+			$("#passengerSliderDiv").show();
+
+		}
+		
+	})
+
+	$("#inlineRadio1").change(function(){
+		if(this.checked){
+			$("#passengerSliderDiv").hide();
+			
+			    
+		  
+
+		}
+	})
+
 	$("#submit").click(function(event){
-		var type = $('input[name=datatype]:checked').val()
+		var type = $('input[name=datatype]:checked').val();
+		var passengerMin = $('#passenger-range').slider('value');
 		var popRankMin = ($( "#slider-range" ).slider( "values", 0 ) -1);
 		var popRankMax = ($( "#slider-range" ).slider( "values", 1 ));
 		$("#chordDiv").empty();
 
-		alert(type);
-		makechord(type,popRankMin,popRankMax);
+		makechord(type,passengerMin,popRankMin,popRankMax);
 	})
 
 

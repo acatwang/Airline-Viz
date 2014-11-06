@@ -61,7 +61,14 @@ def makePassengerMatrix():
                     passenger[row[12]][row[19]] = int(row[0])
             except KeyError:
                 passenger[row[12]] = {row[19]:int(row[0])}
-        print passenger
-        with open("data/passengers.json","wb") as outfile:
-            json.dump(passenger, outfile,sort_keys=True,indent=4, separators=(',', ': '))
+
+
+        max = -1
+        for k in passenger:
+            for k2 in passenger[k]:
+                if passenger[k][k2] > max:
+                    max = passenger[k][k2]
+        print max
+        # with open("data/passengers.json","wb") as outfile:
+        #     json.dump(passenger, outfile,sort_keys=True,indent=4, separators=(',', ': '))
 makePassengerMatrix()
