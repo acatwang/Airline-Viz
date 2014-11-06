@@ -16,11 +16,13 @@
 
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+    <script src="js/mapper.js"></script>
 
 <script src="chord.js"></script>
 </head>
 <body>
 <div class="container-fluid">
+	<div id="tooltip"></div>
 	<div class="page-header">
 		<h1> InfoViz - Personal Project </h1>
 		<h2> Yi-Yin Wang </h2>
@@ -46,7 +48,7 @@
 						<input type="radio" name="colorcode" id="colorcode1" value="origin" checked> Origin 
 					</label>
 					<label class="radio-inline">
-						<input type="radio" name="colorcode" id="colorcode2" value="fillrate"> Fill Rate
+						<input type="radio" name="colorcode" id="colorcode2" value="fillrate" disabled> Potential
 					</label>
 				</div>
 
@@ -304,7 +306,10 @@ function drawChr(matrix,states,chosenStatesOrder,datatype){
 		            })
 		            .text(function(d,i){ return ip_stateName[chosenStatesOrder[i]]; });
 	
-		            
+	group.append("title").text(function(d) {
+	 	console.log(d);
+	 	return "State: "+ states[d.index].state_name+"; Population: "+ states[d.index].population + "; Outbound Flight: "+ Math.round(d.value);
+	 });    
 
 
 	/*************************************************
@@ -334,15 +339,17 @@ function drawChr(matrix,states,chosenStatesOrder,datatype){
         .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
 	*/
 
+
 	function mouseover(d, i) {
 		//TODO: more mouseover effect : 1. tooltip, 2.arc fade
-
+		
 
 		insideChord.classed("fadechord", function(p) {
 			return p.source.index != i
 				&& p.target.index != i;
 		});
 	}
+
 
 
 	/*******************
@@ -423,7 +430,8 @@ function drawChr(matrix,states,chosenStatesOrder,datatype){
 	// TODO: Add an elaborate mouseover title for each chord.
 	
 	 insideChord.append("title").text(function(d) {
-	 	return d.target.value;
+	 	console.log(d);
+	 	return "From "+ states[d.source.index].state_name+" to"+ states[d.target.index].state_name +":" + d.target.value+";"+ "From "+ states[d.target.index].state_name+" to"+ states[d.source.index].state_name +":" + d.source.value;
 	 });
 	
 
@@ -628,7 +636,7 @@ function makechord(type,passengerMin,popMin,popMax){
 				$.each(states, function(idx,obj){
 					var ip2 = obj.state_fip;
 					if (ip2 in data[ip]){
-						if (ip2 in data & (passengerMin==0 || data[ip][ip2][type]>passengerMin)){
+						if (ip2 in data & (type=="flight"||passengerMin==0 || data[ip][ip2][type]>passengerMin)){
 
 							origState[idx] = data[ip][ip2][type];
 						
@@ -678,7 +686,7 @@ $(document).ready(function () {
 	    $( "#passenger-range").slider({
 	      value:0,
 	      min:0,
-	      max:11318128,
+	      max:100000,
 	      slide: function( event, ui ) {
 						       	 $( "#passeger" ).val( "Greater than " + ui.value );
 						      }
